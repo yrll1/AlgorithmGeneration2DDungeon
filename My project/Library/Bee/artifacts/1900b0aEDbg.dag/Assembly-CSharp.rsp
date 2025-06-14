@@ -351,6 +351,7 @@
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/AbstractDungonGeneration.cs"
+"Assets/Scripts/Data/SimpleRandomWalkSo.cs"
 "Assets/Scripts/LearnScripts/LearnP.cs"
 "Assets/Scripts/LearnScripts/LeranR.cs"
 "Assets/Scripts/ProceduralGenerationAlgorithms.cs"
