@@ -357,6 +357,7 @@
 "Assets/Scripts/ProceduralGenerationAlgorithms.cs"
 "Assets/Scripts/SimpleRandomWalkGenerator.cs"
 "Assets/Scripts/TilemapVisualizer.cs"
+"Assets/Scripts/WallGenerator.cs"
 -langversion:9.0
 /deterministic
 /optimize-

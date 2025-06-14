@@ -7,15 +7,18 @@ using UnityEngine.Tilemaps;
 public class TilemapVisualizer : MonoBehaviour
 {
     [SerializeField]
-    private Tilemap floorTilemap;
+    private Tilemap floorTilemap,wallTilemap;
     [SerializeField]
-    private TileBase floorTile;
+    private TileBase floorTile,wallTop;
     
     public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions)//允许外部调用的公共方法绘制地板瓦片(IEnumerable<>泛型接口,它定义了一个可以被迭代的集合,实现这个集合的类可以循环遍历其元素)
     {
         PaintTiles(floorPositions, floorTilemap, floorTile);//此处floorPositions以存储设置的所有漫游步数坐标
     }
-
+    internal void PaintSingleBasicWall(Vector2Int position)
+    {
+        PaintSingleTile(wallTilemap, wallTop, position);
+    }
     private void PaintTiles(IEnumerable<Vector2Int> positions, Tilemap tilemap, TileBase tile)////方法接收位置集合、瓦片地图引用和瓦片类型，遍历每个位置并调用PaintSingleTile。
     {
      foreach (var position in positions)//循环遍历集合Positions每个XY坐标
@@ -32,5 +35,8 @@ public class TilemapVisualizer : MonoBehaviour
     public void Clear()
     {
         floorTilemap.ClearAllTiles();//清空当前绘制的瓦片地图
+        wallTilemap.ClearAllTiles();//清除当前的墙壁瓦片地图
     }
+
+  
 }
