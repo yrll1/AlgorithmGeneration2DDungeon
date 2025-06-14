@@ -15,7 +15,7 @@ public class TilemapVisualizer : MonoBehaviour
     {
         PaintTiles(floorPositions, floorTilemap, floorTile);//此处floorPositions以存储设置的所有漫游步数坐标
     }
-    internal void PaintSingleBasicWall(Vector2Int position)
+    internal void PaintSingleBasicWall(Vector2Int position)//因为在WallGenerator类中已经遍历,传入的是但个数据,直接调用 PaintSingleTile()方法绘制便可
     {
         PaintSingleTile(wallTilemap, wallTop, position);
     }
