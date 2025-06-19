@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2048
     height: 1060.8
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Inspector
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 88
+  controlID: 16
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 74
+  controlID: 22
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 75
+  controlID: 108
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -316,23 +316,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets
     m_Globs: []
     m_OriginalText: 
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: F:\AlgorithmGeneration2DDungeon\My project
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 26590000
-    m_LastClickedID: 22822
-    m_ExpandedIDs: 0000000018590000ffffff7f
+    m_SelectedIDs: 18590000
+    m_LastClickedID: 22808
+    m_ExpandedIDs: 000000001859000026590000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -885,9 +885,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -6.5856457, y: 7.048807, z: -2.3827264}
+    m_Target: {x: 2.6309578, y: 5.422134, z: -2.8193462}
     speed: 2
-    m_Value: {x: -6.5856457, y: 7.048807, z: -2.3827264}
+    m_Value: {x: 2.6309578, y: 5.422134, z: -2.8193462}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 2
@@ -934,13 +934,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.0010789934, y: 0.99892193, z: -0.032985996, w: -0.032675467}
+    m_Target: {x: 0.0052720746, y: 0.9947054, z: -0.07595322, w: 0.06904458}
     speed: 2
-    m_Value: {x: -0.0010789924, y: 0.998921, z: -0.032985967, w: -0.032675438}
+    m_Value: {x: 0.0052720676, y: 0.99470407, z: -0.075953126, w: 0.06904449}
   m_Size:
-    m_Target: 4.9835215
+    m_Target: 7.9321394
     speed: 2
-    m_Value: 4.9835215
+    m_Value: 7.9321394
   m_Ortho:
     m_Target: 0
     speed: 2
