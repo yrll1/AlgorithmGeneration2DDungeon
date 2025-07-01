@@ -22,13 +22,13 @@ public static class ProceduralGenerationAlgorithms
     }
     public static List<Vector2Int> RandomWalkCorridor(Vector2Int startPosition,int corridorLength)
     {
-        List<Vector2Int> corridor = new List<Vector2Int>();
-        var direction = Direction2D.GetRandomCardinalDirection();
-      var currentPosition = startPosition;
+        List<Vector2Int> corridor = new List<Vector2Int>();//走廊长度
+        var direction = Direction2D.GetRandomCardinalDirection();//记录方向
+      var currentPosition = startPosition;//记录当前走廊位置
         corridor.Add(currentPosition); 
-      for(int i = 0;i < corridorLength;i++)
+      for(int i = 0;i < corridorLength;i++)//遍历存储走廊位置的列表
         {
-            currentPosition += direction;
+            currentPosition += direction;//当前位置叠加方向
             corridor.Add(currentPosition);
           
         }
