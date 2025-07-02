@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using UnityEngine;
 
@@ -25,6 +26,8 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkGenerator//此类先创
         CreateCorridors(floorPositions, potentialRoomPositions);
         HashSet<Vector2Int> roomPositions = CreateRooms(potentialRoomPositions);
 
+        List<Vector2Int> deadEnds = FindAllDeadEnds(floorPositions);
+        CreateRoomsAtDeadEnds(deadEnds, roomPositions); 
         floorPositions.UnionWith(roomPositions);
 
       
@@ -32,17 +35,50 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkGenerator//此类先创
         WallGenerator.CreateWalls(floorPositions,tilemapVisualizer);//根据floorPositions存储的坐标来生成地墙壁
     }
 
+    private void CreateRoomsAtDeadEnds(List<Vector2Int> deadEnds, HashSet<Vector2Int> roomFloors)
+    {
+        foreach (var position in deadEnds )
+        {
+            if(roomFloors.Contains(position)==false)
+            {
+                var room = RunRandowWalk(randomWalkParameters,position);
+                roomFloors.UnionWith(room);
+            }
+        }
+    }
+
+    private List<Vector2Int> FindAllDeadEnds(HashSet<Vector2Int> floorPositions)
+    {
+        List<Vector2Int> deadEnds = new List<Vector2Int>();
+        foreach (var position in floorPositions)
+        {
+            int neighBourCount = 0;
+            foreach (var direction in Direction2D.cardinalDirectionsList)
+            {
+                if(floorPositions.Contains(position+direction))
+                {
+                    neighBourCount++;
+                }
+            }
+         if(neighBourCount==1)
+            {
+                deadEnds.Add(position);
+            }
+        }
+        return deadEnds;
+    }
+
     private HashSet<Vector2Int> CreateRooms(HashSet<Vector2Int> potentialRoomPositions)//
     {
-      HashSet<Vector2Int> roomPositions = new HashSet<Vector2Int>();
-       int RoomCreateCount = Mathf.RoundToInt(potentialRoomPositions.Count*roomPercent);
+      HashSet<Vector2Int> roomPositions = new HashSet<Vector2Int>();//初始化实际生成的房间位置
+       int RoomCreateCount = Mathf.RoundToInt(potentialRoomPositions.Count*roomPercent);//四舍五入,按比列来实际生成房间数量
 
         List<Vector2Int> roomToCreate = potentialRoomPositions.OrderBy(x => Guid.NewGuid()).Take(RoomCreateCount).ToList();
         //从 potentialRoomPositions 里随机挑选出 RoomCreateCount 个位置，把它们存储到 roomToCreate 列表中
-        foreach (var roomPosition in roomToCreate)
+        foreach (var roomPosition in roomToCreate)//遍历RoomCreateCount列表中的每个位置
         {
-            var roomFloor = RunRandowWalk(randomWalkParameters,roomPosition);
-            roomPositions.UnionWith(roomFloor);
+            var roomFloor = RunRandowWalk(randomWalkParameters,roomPosition);//在当前位置使用随机漫步算法生成一个房间的地板位置集合
+            roomPositions.UnionWith(roomFloor);// 返回包含所有实际生成的房间的地板位置的集合
         }
         return roomPositions;
     }
