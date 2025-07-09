@@ -356,6 +356,7 @@
 "Assets/Scripts/LearnScripts/LearnP.cs"
 "Assets/Scripts/LearnScripts/LeranR.cs"
 "Assets/Scripts/ProceduralGenerationAlgorithms.cs"
+"Assets/Scripts/RoomFirstDungeonGenerator.cs"
 "Assets/Scripts/SimpleRandomWalkGenerator.cs"
 "Assets/Scripts/TilemapVisualizer.cs"
 "Assets/Scripts/WallGenerator.cs"

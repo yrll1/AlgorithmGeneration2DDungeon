@@ -88,7 +88,7 @@ public static class ProceduralGenerationAlgorithms
 
     {
         var xSplit = Random.Range(1, room.size.x); //随机选择一个分割点 xSplit，范围在 1 到 room.size.x - 1 之间。
-        BoundsInt room1 = new BoundsInt(room.min,new Vector3Int(xSplit,room.min.y,room.min.z));//根据分割点创建两个新的空间 room1 和 room2。
+        BoundsInt room1 = new BoundsInt(room.min,new Vector3Int(xSplit,room.size.y,room.size.z));//根据分割点创建两个新的空间 room1 和 room2。
         BoundsInt room2 = new BoundsInt(new Vector3Int(room.min.x+xSplit,room.min.y,room.min.z),new Vector3Int(room.size.x-xSplit,room.size.y,room.size.z));
         roomQueue.Enqueue(room1);//用于存储待分割房间的队列。
         roomQueue.Enqueue(room2);
