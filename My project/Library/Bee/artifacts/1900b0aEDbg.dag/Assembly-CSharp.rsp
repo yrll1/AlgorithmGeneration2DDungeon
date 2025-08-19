@@ -359,7 +359,10 @@
 "Assets/Scripts/RoomFirstDungeonGenerator.cs"
 "Assets/Scripts/SimpleRandomWalkGenerator.cs"
 "Assets/Scripts/TilemapVisualizer.cs"
+"Assets/Scripts/WallByteTypes.cs"
 "Assets/Scripts/WallGenerator.cs"
+"Assets/Scripts/WallTypeNew.cs"
+"Assets/Test1.cs"
 -langversion:9.0
 /deterministic
 /optimize-

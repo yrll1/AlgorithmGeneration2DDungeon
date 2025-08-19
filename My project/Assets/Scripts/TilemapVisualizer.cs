@@ -9,15 +9,40 @@ public class TilemapVisualizer : MonoBehaviour
     [SerializeField]
     private Tilemap floorTilemap,wallTilemap;
     [SerializeField]
-    private TileBase floorTile,wallTop;
+    private TileBase floorTile,wallTop,wallSideRight,wallSideLeft,wallSideBottom,wallFull,wallInnerCornerDownLeft,wallInnerCornerDownRight,wallDiagonalCornerDownLeft,wallDiagonalCornerDownRight,wallDiagonalCornerUpRight,wallDiagonalCornerUpLeft, wallBottom;
     
     public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions)//允许外部调用的公共方法绘制地板瓦片(IEnumerable<>泛型接口,它定义了一个可以被迭代的集合,实现这个集合的类可以循环遍历其元素)
     {
         PaintTiles(floorPositions, floorTilemap, floorTile);//此处floorPositions以存储设置的所有漫游步数坐标
     }
-    internal void PaintSingleBasicWall(Vector2Int position)//因为在WallGenerator类中已经遍历,传入的是但个数据,直接调用 PaintSingleTile()方法绘制便可
+    internal void PaintSingleBasicWall(Vector2Int position,string binaryType)//因为在WallGenerator类中已经遍历,传入的是但个数据,直接调用 PaintSingleTile()方法绘制便可
     {
-        PaintSingleTile(wallTilemap, wallTop, position);
+        int typeAsInt = Convert.ToInt32(binaryType,2);
+        TileBase tile = null;
+        if (WallByteTypes.wallTop.Contains(typeAsInt))
+        {
+            tile = wallTop;
+
+        }
+        else if (WallByteTypes.wallSideRight.Contains(typeAsInt))
+        {
+            tile = wallSideRight;
+        }
+        else if (WallByteTypes.wallSideLeft.Contains(typeAsInt))
+        {
+            tile = wallSideLeft;
+        }
+        else if (WallByteTypes.wallBottm.Contains(typeAsInt))
+        {
+            tile =wallSideBottom;
+        }
+        else if (WallByteTypes.wallFull.Contains(typeAsInt))
+        {
+            tile = wallFull;
+        }
+
+        if (tile!=null)
+        PaintSingleTile(wallTilemap, tile, position);
     }
     private void PaintTiles(IEnumerable<Vector2Int> positions, Tilemap tilemap, TileBase tile)////方法接收位置集合、瓦片地图引用和瓦片类型，遍历每个位置并调用PaintSingleTile。
     {
@@ -37,6 +62,46 @@ public class TilemapVisualizer : MonoBehaviour
         floorTilemap.ClearAllTiles();//清空当前绘制的瓦片地图
         wallTilemap.ClearAllTiles();//清除当前的墙壁瓦片地图
     }
-
+    internal void PaintSingleCornerWall(Vector2Int position,string binaryType)
+    {
+        int typeAsInt = Convert.ToInt32(binaryType,2);
+        TileBase tile = null;
+        if(WallByteTypes.wallInnerCornerDownLeft.Contains(typeAsInt))
+        {
+            tile =  wallInnerCornerDownLeft;
+        }
+       else if (WallByteTypes.wallInnerCornerDownRight.Contains(typeAsInt))
+        {
+            tile = wallInnerCornerDownRight;
+        }
+       else if (WallByteTypes.wallDiagonalCornerDownLeft.Contains(typeAsInt))
+        {
+            tile = wallDiagonalCornerDownLeft;
+        }
+        else if (WallByteTypes.wallDiagonalCornerDownRight.Contains(typeAsInt))
+        {
+            tile = wallDiagonalCornerDownRight;
+        }
+        else if (WallByteTypes.wallDiagonalCornerUpRight.Contains(typeAsInt))
+        {
+            tile = wallDiagonalCornerUpRight;
+        }
+        else if (WallByteTypes.wallDiagonalCornerUpLeft.Contains(typeAsInt))
+        {
+            tile = wallDiagonalCornerUpLeft;
+        }
+        else if (WallByteTypes.wallFullEightDirections.Contains(typeAsInt))
+        {
+            tile = wallFull;
+        }
+        else if (WallByteTypes.wallBottmEightDirections.Contains(typeAsInt))
+        {
+            tile = wallBottom;
+        }
+        if (tile!=null)
+        {
+            PaintSingleTile(wallTilemap,tile,position);
+        }
+    }
   
 }
